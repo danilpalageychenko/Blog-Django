@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
 from django.shortcuts import redirect
+from .forms import PostForm
+
+def googleauth(request):
+    return redirect('soc/login/google-oauth2/')
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -41,3 +44,7 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def google_login(request):
+    return redirect('/')
+

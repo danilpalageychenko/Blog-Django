@@ -11,7 +11,11 @@
     <body>
         <div class="page-header">
             {% if user.is_authenticated %}
-            <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% else %}
+                <a href="{% url 'blog.views.googleauth' %}" class="top-menu"><span class="ICON"><img src="{% static 'logo3.png' %}"width="150" height="150"></span></a>
+
+
             {% endif %}
             <h1><a href="/">Django Girls Blog</a></h1>
         </div>
