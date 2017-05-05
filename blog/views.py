@@ -8,10 +8,12 @@ from .forms import PostForm
 def googleauth(request):
     return redirect('soc/login/google-oauth2/')
 
+
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    #posts = Post.objects.filter(author_id = 1)
+    # posts = Post.objects.filter(author_id = 1)
     return render(request, 'blog/post_list.html', {'posts': posts})
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
